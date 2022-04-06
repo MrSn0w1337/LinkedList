@@ -12,6 +12,7 @@ CLinkedList::~CLinkedList()
 	Clear();
 }
 
+//Complexity: O(n)
 void CLinkedList::ClearRecursive(PLIST_ENTRY ListEntry)
 {
 	if (ListEntry == &m_ListHead) return;
@@ -21,6 +22,7 @@ void CLinkedList::ClearRecursive(PLIST_ENTRY ListEntry)
 	ClearRecursive(ListEntryNext);
 }
 
+//Complexity: O(n)
 PLIST_ENTRY CLinkedList::GetEntryByElementRecursive(void* pElement, PLIST_ENTRY ListEntry)
 {
 	if (ListEntry == &m_ListHead)
@@ -65,6 +67,7 @@ void CLinkedList::Clear()
 	KeReleaseSpinLock(&m_SpinLock, oldIRQL);
 }
 
+//Complexity: O(n)
 PLIST_ENTRY CLinkedList::GetEntryByIndexRecursive(PLIST_ENTRY ListEntry, UCHAR i, UCHAR inc)
 {
 	return inc >= i || ListEntry == &m_ListHead ? ListEntry : GetEntryByIndexRecursive(ListEntry->Flink, i, inc + 1);
